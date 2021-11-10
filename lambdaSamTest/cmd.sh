@@ -1,0 +1,3 @@
+#SAM build and deploy
+bucket="`echo lambdaSamTest | tr 'A-Z' 'a-z'`"
+sam build && sam deploy --stack-name "lambdaSamTest" --parameter-overrides "ParameterKey=project_name,ParameterValue=lambdaSamTest,ParameterKey=aws_region,ParameterValue=us-east-1,ParameterKey=function_name,ParameterValue=lamda_function.py" --s3-bucket "bucket-$bucket" --s3-prefix "lambdaSamTest" --region "us-east-1" --capabilities "CAPABILITY_IAM" --no-confirm-changeset
